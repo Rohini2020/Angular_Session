@@ -1,0 +1,17 @@
+.header{
+padding: 5px 20px;
+background: purple;
+font-family: 'Times New Roman';
+}
+.title{
+    color: white;
+    text-decoration: none;
+    font-family: 'Times New Roman';
+}
+.login,.register, .add-post{
+    float: right;
+    text-decoration: none;
+    color: white;
+    padding-top: 10px;
+    font-family: 'Times New Roman';
+}
