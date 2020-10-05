@@ -9,8 +9,8 @@ export class CustomValidationService {
 
     confirmedValidator(controlName: string, matchingControlName: string) {
         return (formGroup: FormGroup) => {
-            const control = formGroup.controls[controlName];
-            const matchingControl = formGroup.controls[matchingControlName];
+            const control = formGroup.controls[controlName];//password
+            const matchingControl = formGroup.controls[matchingControlName];//confirm password
             if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
                 return;
             }

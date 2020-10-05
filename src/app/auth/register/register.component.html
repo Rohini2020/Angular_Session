@@ -1,81 +1,86 @@
 <div class="container d-flex justify-content-center ">
     <form class="form-signin form-content-width border border-light p-5 " style="width: 50%;" [formGroup]="registerForm">
         <h1 class="h4 text-center  mb-4 mb-4">Register</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" id="fname" [formControlName]="'fname'" placeholder="Fname" class="form-control mb-2">
+                    <label *ngIf="registerForm.get('fname').touched && registerForm.get('fname').hasError('pattern')" 
+                    class="text-danger warning-messages">  Name contain Uppercase or Lowercase only...</label>
+                    <label *ngIf="registerForm.get('fname').touched && registerForm.get('fname').hasError('required')" 
+                    class="text-danger warning-messages"> First Name field is required...</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="lname" [formControlName]="'lname'" placeholder="Lname" class="form-control mb-2">
+                    <label *ngIf="registerForm.get('lname').touched && registerForm.get('lname').hasError('pattern')" 
+                    class="text-danger warning-messages"> Name contain Uppercase or Lowercase only...</label>
+                     <label *ngIf="registerForm.get('lname').touched && registerForm.get('lname').hasError('required')" 
+                    class="text-danger warning-messages"> Last Name field is required...</label>
+                </div>
 
-        <label>First Name</label>
-        <input type="text" id="fname" [formControlName]="'fname'" placeholder="Fname" class="form-control mb-2">
-  
-        <div>
-            <label *ngIf="registerForm.get('fname').touched && registerForm.get('fname').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('fname').touched && registerForm.get('fname').hasError('required')" 
-            class="text-danger warning-messages"> First Name field is required...</label>
-        </div>
+            </div>
+            <div>
+                <div>
+                    <input type="text" id="username" [formControlName]="'username'" placeholder="Username" class="form-control mb-2">
+                    <label *ngIf="registerForm.get('username').touched && registerForm.get('username').hasError('required')" class="text-danger warning-messages"> Username field is required...</label>
+                </div>
+            </div>
 
-        <label>Last Name</label>
-        <input type="text" id="lname" [formControlName]="'lname'" placeholder="Lname" class="form-control mb-2">
-  
-        <div>
-            <label *ngIf="registerForm.get('lname').touched && registerForm.get('lname').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('lname').touched && registerForm.get('lname').hasError('required')" 
-            class="text-danger warning-messages"> Last Name field is required...</label>
-        </div>
-
-        <label>Description</label>
-        <input type="text" id="description" [formControlName]="'description'" placeholder="Description" class="form-control mb-2" autofocus="">
-  
-        <div>
-            <label *ngIf="registerForm.get('description').touched && registerForm.get('description').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('description').touched && registerForm.get('description').hasError('required')" 
-            class="text-danger warning-messages"> Description field is required...</label>
-        </div>
-
-        <label>Email</label>
-        <input type="text" id="email" [formControlName]="'email'" placeholder="Email" class="form-control mb-2" maxlength="15">
-  
-        <div>
-            <label *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')" 
-            class="text-danger warning-messages"> Email field is required...</label>
-        </div>
-
-        <label>Password</label>
-        <input type="password" id="password" [formControlName]="'password'" placeholder="Password" class="form-control mb-2" maxlength="15">
-  
-        <div>
-            <label *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')" 
-            class="text-danger warning-messages"> Password field is required...</label>
+            <div>   
+                <div>
+                    <input type="text" id="email" [formControlName]="'email'" placeholder="Email" class="form-control mb-2">
+                    <label *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('pattern')" 
+                    class="text-danger warning-messages"> invalid email pattern...</label>
+                    <label *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')" 
+                    class="text-danger warning-messages"> Email field is required...</label>
+                </div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="password" id="password" [formControlName]="'password'" placeholder="Password" class="form-control mb-2" maxlength="15">
+                    
+                    <label *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')" 
+                    class="text-danger warning-messages"> Password field is required...</label>
+                </div>
             
-      </div>
+                <div class="col-sm-6">
+                    
+                    <input type="password" id="confirmpassword" [formControlName]="'confirmpassword'" placeholder="ConfirmPassword" class="form-control mb-2">
+                    <div *ngIf="registerForm?.get('confirmPassword')?.touched">
+                        <label *ngIf="registerForm?.get('confirmPassword').hasError('required')"
+                            class="text-danger warning-messages">Confirm Password
+                            is required</label>
+                        <label *ngIf="registerForm.get('confirmPassword').hasError('mismatch')"
+                            class="text-danger warning-messages">Password do not matched</label>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="form-group shadow -textarea" autofocus="">
+                <textarea class="form-control z-depth-1" rows="2" placeholder="Bio" id="bio"  [formControlName]="'bio'" >
+                </textarea>
+                <label *ngIf="registerForm.get('bio').touched && registerForm.get('bio').hasError('required')" 
+                class="text-danger warning-messages"> Biodata field is required...</label>
 
-      <label>Confirm Password</label>
-        <input type="password" id="confirmpassword" [formControlName]="'confirmpassword'" placeholder="ConfirmPassword" class="form-control mb-2">
-  
-     <div>
-            <label *ngIf="registerForm.get('confirmpassword').touched && registerForm.get('confirmpassword').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('confirmpassword').touched && registerForm.get('confirmpassword').hasError('required')" 
-            class="text-danger warning-messages"> Password field is required...</label>
-            <label *ngIf="registerForm.get('confirmPassword').hasError('mismatch')"
-            class="text-danger warning-messages">Password do not matched</label>
-     </div>
+            </div>
+            
+            <div>
+                
+                <input type="text" id="contactnumber" [formControlName]="'contactnumber'" placeholder="ContactNumber" class="form-control mb-2">
+                <label *ngIf="registerForm.get('contactnumber').touched && registerForm.get('contactnumber').hasError('pattern')" 
+                class="text-danger warning-messages"> invalid Number...</label>
+                <label *ngIf="registerForm.get('contactnumber').touched && registerForm.get('contactnumber').hasError('required')" 
+                class="text-danger warning-messages"> Contact Number field is required...</label>
+            </div>
 
-        <label>Contact Number</label>
-        <input type="text" id="contactnumber" [formControlName]="'contactnumber'" placeholder="ContactNumber" class="form-control mb-2">
-
-     <div>
-            <label *ngIf="registerForm.get('contactnumber').touched && registerForm.get('contactnumber').hasError('pattern')" 
-            class="text-danger warning-messages"> invalid pattern...</label>
-            <label *ngIf="registerForm.get('contactnumber').touched && registerForm.get('contactnumber').hasError('required')" 
-            class="text-danger warning-messages"> Contact Number field is required...</label>
-     </div>
-
-     <button class="btn btn-primary btn-block" type="submit" [disabled]="!registerForm.valid">Sign up</button>
-  </form>
+            <div class="form-group">
+                <input type="text" id="linkedin" [formControlName]="'linkedin'" placeholder="LinkedIn Url" class="form-control mb-3" autofocus=""> 
+            </div>
+            
+            <button class="btn btn-primary btn-block mb-4"[disabled]="!registerForm.valid" type="submit">Submit</button>
+        </div>
+    </form>
 </div>
 
