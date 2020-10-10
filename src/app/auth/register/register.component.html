@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center ">
-    <form class="form-signin form-content-width border border-light p-5 " style="width: 50%;" [formGroup]="registerForm">
+    <form class="form-signin form-content-width border border-light p-5 " style="width: 50%;" [formGroup]="registerForm" (ngSubmit)= "onSubmit()">
         <h1 class="h4 text-center  mb-4 mb-4">Register</h1>
         <div class="container">
             <div class="row">

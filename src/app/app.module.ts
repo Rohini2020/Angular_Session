@@ -13,6 +13,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HttpClientModule} from '@angular/common/http';
 import { from } from 'rxjs';
 import { NgxWebstorageModule} from 'ngx-webstorage';
+import { HomeComponent } from './home/home.component';
+import { RegisterSuccessComponent } from './register-success/register-success.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NgxWebstorageModule} from 'ngx-webstorage';
 
     LoginComponent,
     AddPostComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    RegisterSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { NgxWebstorageModule} from 'ngx-webstorage';
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent},
       { path: 'add-post', component: AddPostComponent},
-      {path: 'register',component: RegisterComponent}
+      {path: 'register',component: RegisterComponent},
+      { path:'home',component: HomeComponent},
+      {path: 'register-success', component: RegisterSuccessComponent},
 
     ]),
   ],

@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import {LocalStorageService } from 'ngx-webstorage';
 import { map } from 'rxjs/operators';
-
+import {RegisterPayload} from './auth/register-payload';
  
 @Injectable({
   providedIn: 'root'
@@ -21,14 +21,13 @@ export class AuthService {
     return this.httpClient.post(this.baseurl + 'user/loginUser',loginpayload,{headers:headers}).pipe(map(data =>{
       this.localStorageService.store('loginData', data);
       return true;
-
-
-
-
-
     }));
-
-
   }
 
+
+  // register api call
+  register(registerPayload: RegisterPayload): Observable<any>{
+    let headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.httpClient.post(this.baseurl + 'user/signup',registerPayload,{headers:headers});
+  }
 }
